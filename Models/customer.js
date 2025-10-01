@@ -48,7 +48,7 @@ const addCustomer = async () => {
 
 }
 
-addCustomer();
+// addCustomer();
 
 
 // const addOrders = async () => {
@@ -61,3 +61,32 @@ addCustomer();
 // }
 
 // addOrders();
+
+// DELETION HANDLING
+
+const addCust = async () => {
+    let newCust = new Customer({
+        name: "Karan Arjun"
+    });
+
+    let newOrder = new Order({
+        item: "Pizza",
+        price: 250
+    });
+
+    newCust.orders.push(newOrder);
+
+    await newOrder.save();
+    await newCust.save();
+
+    console.log("added new customer");
+}
+
+const delCust = async () =>  {
+    let data = await Customer.findByIdAndDelete('68dcef2534943ac5f4e75be1');
+    console.log(data);
+}
+
+// addCust();
+
+delCust();
